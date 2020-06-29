@@ -1,10 +1,7 @@
-![image](images/0.png) [fig:z12]
+![image](images/0.png) 
 
-(1,0)<span>300</span>
-[0.25in]
-[2mm] (1,0)<span>200</span>
-[2cm] Segmentacja ,,kostki” hiperspektralnej z wykorzystaniem sygnatury spektralnej obiektu
-[6cm]
+Segmentacja ,,kostki” hiperspektralnej z wykorzystaniem sygnatury spektralnej obiektu
+
 
 Jacek Ciuba **152082**
 3 czerwiec 2020
@@ -20,7 +17,7 @@ Słowo ,,hiper” oznacza nadmierny w rozmiarze, w jakości lub ”ponad, powyż
 
 Systemy hiperspektralne rejestrują odbite od powierzchni Ziemi promieniowanie w dziesiątkach a nawet setkach wąskich ciągłych kanałów, co umożliwia charakteryzowanie różnych typów pokrycia terenu bardziej szczegółowo niż z wykorzystaniem danych pozyskiwanych przez sensory wielospektralne (rys. 1).
 
-![Ciągłe spektra z sensorów hiperspektralnych (zmodyfikowane: Fraser i in., 1986; Crist i in., 1986; Sabins, 1987)](images/1.png "fig:") [fig:z12]
+![Ciągłe spektra z sensorów hiperspektralnych (zmodyfikowane: Fraser i in., 1986; Crist i in., 1986; Sabins, 1987)](images/1.png "fig:") 
 
 Ilość informacji spektralnej zarejestrowanej przez spektometry hiperspektralne często przekracza zakres wymagany do identyfikacji wielu obiektów. Większość hiperspektralnych sensorów lotniczych np. Hyperion, rejestruje promieniowanie elektromagnetyczne dla zakresów widzialnego (VIS) bliskiej i średniej podczerwieni (NIR i SWIR). Niektóre z nich (np. DAIS) posiadają dodatkowy sensor umożliwiający rejestrację również w zakresie termalnym (8000 - 12600 nm) lub rejestrują promieniowanie tylko dla tego zakresu.
 
@@ -87,7 +84,7 @@ gdzie:
 
 W algorytmie tym, oceniany jest otrzymany kąt, nie długość wektora.
 
-![Wizualizacja klasyfikacji pikseli do poszczególnych klas](images/2.png "fig:") [fig:z12]
+![Wizualizacja klasyfikacji pikseli do poszczególnych klas](images/2.png "fig:") 
 
 Zalety tego algorytmu to:
 
@@ -128,15 +125,15 @@ Omówienie interfejsu graficznego
 
 Po uruchomieniu pliku programu w odpowiednio skonfigurowanym środowisku, użytkownik otrzymuje do komunikacji z programem okno, pozwalające na wybranie kostki hiperspektralnej w formacie .tif oraz na wyświetlenie obrazu *True Colour Composite* oraz *False Colour Composite*.
 
-![Okno wyboru pliku i wyświetlenia go](images/3.png "fig:") [fig:z12]
+![Okno wyboru pliku i wyświetlenia go](images/3.png "fig:") 
 
 Po wybraniu pliku kostki hiperspektralnej oraz po kliknięciu przycisku *Show TCC & FCC* wyświetlane zostaną wcześniej wspomniane dwa obrazy.
 
-![Wyświetlenie obrazów TCC oraz FCC](images/4.png "fig:") [fig:z12]
+![Wyświetlenie obrazów TCC oraz FCC](images/4.png "fig:") 
 
 Obraz wydaje się zbyt ciemny, ponieważ zastosowano normalizację liniową, a powinna zostać zastosowana normalizacja według następującego wzoru:
 
-![image](images/5.png) [fig:z12]
+![image](images/5.png) 
 
 gdzie \(\alpha\) określa szerokość zakresu intensywności wejściowej, a \(\beta\) określa intensywność, wokół której zakres jest wyśrodkowany.
 
@@ -147,21 +144,21 @@ W celu wybrania sygnatur spektralnych interesujących nas klas, należy dwa razy
 Po wybraniu interesujących nas pikseli należy zamknąć wszystkie okna programu i zaczekać aż ten sprawdzi wszystkie piksele we wszystkich warstwach kostki hiperspektralnej. Czas oczekiwania na wyniki wydłuża się wraz z ilością wybranych wcześniej reprezentatywnych pikseli.
 Po chwili otrzymujemy następujący obraz:
 
-![Sklasyfikowany obraz według sygnatur spektralnych wybranych przez użytkownika](images/6.png "fig:") [fig:z12]
+![Sklasyfikowany obraz według sygnatur spektralnych wybranych przez użytkownika](images/6.png "fig:") 
 
 Piksele oznaczone na czerwono, zielono oraz niebiesko są reprezentantami wcześniej wybranych sygnatur.
 Reszta czarnych pikseli nie została przydzielona do żadnej klasy.
 
 Na końcu, wyświetlane jest podsumowanie działania programu, przedstawiające zestawienie wszystkich 3 obrazów:
 
-![Podsumowanie działania programu](images/7.png "fig:") [fig:z12]
+![Podsumowanie działania programu](images/7.png "fig:") 
 
 Implementacja algorytmu
 -----------------------
 
 Najważniejsza część programu zaczyna się od 125 linii. Obliczane są tam wartości kąta dla każdego piksela w kostce hiperspektralnej, według wcześniej podanego wzoru SAM.
 
-![Implementacja algorytmu Spectral Angle Mapper](images/8.png "fig:") [fig:z12]
+![Implementacja algorytmu Spectral Angle Mapper](images/8.png "fig:") 
 
 Warto tutaj zauważyć, że kąt \(p\_cos[j]\) jest obliczany w radianach. W związku z tym stała \(0.1\) określa do jakiego poziomu, dany piksel jest klasyfikowany do sygnatury wyznaczonej wcześniej przez użytkownika.
 
@@ -171,7 +168,7 @@ Wykorzystana kostka hiperspektralna
 Kostka została pobrana ze strony <https://engineering.purdue.edu/~biehl/MultiSpec/hyperspectral.html>.
 Kostka zawiera 191 kanałów spektralnych dla obszaru Washington DC Mall.
 
-![Obraz wykorzystanej kostki w odniesieniu do ground truth](images/9.png "fig:") [fig:z12]
+![Obraz wykorzystanej kostki w odniesieniu do ground truth](images/9.png "fig:") 
 
 Podsumowanie
 ============
