@@ -1,184 +1,182 @@
 ![image](images/0.png) 
 
-Segmentacja ,,kostki” hiperspektralnej z wykorzystaniem sygnatury spektralnej obiektu
-
+Hyperspectral "cube" segmentation using the object's spectral signature
 
 Jacek Ciuba **152082**
-3 czerwiec 2020
+June 3, 2020
 
-Wprowadzenie
+Introduction
 ============
 
-Dane hiperspektralne
+Hyperspectral data
 --------------------
 
-Słowo ,,hiper” oznacza nadmierny w rozmiarze, w jakości lub ”ponad, powyżej”. Nadmiarowa informacja wynika z bardzo dużej rozdzielczości spektralnej (wąskie zakresy rejestracji dla poszczególnych kanałów) oraz dużej liczby kanałów w stosunku do danych multispektralnych, jak również z bardzo szerokiego zakresu fal promieniowania elektromagnetycznego, dla którego rejestrowany jest dany obraz. Większość sensorów, które są nazwane hiperspektralnymi posiada ponad 40 kanałów z rozdzielczością spektralną
-\< 20 nm.
+The word "hyper" means excessive in size, quality or "over, above". The redundant information results from a very high spectral resolution (narrow recording ranges for individual channels) and a large number of channels in relation to multispectral data, as well as from a very wide range of electromagnetic radiation waves for which a given image is recorded. Most sensors that are called hyperspectral have more than 40 channels with <20 nm spectral resolution.
 
-Systemy hiperspektralne rejestrują odbite od powierzchni Ziemi promieniowanie w dziesiątkach a nawet setkach wąskich ciągłych kanałów, co umożliwia charakteryzowanie różnych typów pokrycia terenu bardziej szczegółowo niż z wykorzystaniem danych pozyskiwanych przez sensory wielospektralne (rys. 1).
+Hyperspectral systems record radiation reflected from the Earth's surface in dozens or even hundreds of narrow continuous channels, which allows characterizing different types of land cover in more detail than using data obtained by multispectral sensors (Fig. 1).
 
-![Ciągłe spektra z sensorów hiperspektralnych (zmodyfikowane: Fraser i in., 1986; Crist i in., 1986; Sabins, 1987)](images/1.png "fig:") 
+![Continuous spectra from hyperspectral sensors (modified: Fraser et al., 1986; Crist et al., 1986; Sabins, 1987)](images/1.png "fig:") 
 
-Ilość informacji spektralnej zarejestrowanej przez spektometry hiperspektralne często przekracza zakres wymagany do identyfikacji wielu obiektów. Większość hiperspektralnych sensorów lotniczych np. Hyperion, rejestruje promieniowanie elektromagnetyczne dla zakresów widzialnego (VIS) bliskiej i średniej podczerwieni (NIR i SWIR). Niektóre z nich (np. DAIS) posiadają dodatkowy sensor umożliwiający rejestrację również w zakresie termalnym (8000 - 12600 nm) lub rejestrują promieniowanie tylko dla tego zakresu.
+The amount of spectral information recorded by hyperspectral spectometers often exceeds the range required to identify multiple objects. Most hyperspectral airborne sensors, e.g. Hyperion, register electromagnetic radiation for the visible and middle infrared (VIS) ranges (NIR and SWIR). Some of them (e.g. DAIS) have an additional sensor that enables recording also in the thermal range (8000 - 12600 nm) or they register radiation only in this range.
 
-Sensory hiperspektralne dostarczają pełną spektralną informację o badanym obiekcie, jak również wydobywają cechy, które wcześniej nie były możliwe do pozyskania. Większość obiektów na powierzchni Ziemi charakteryzuje się obecnością specyficznych cech na krzywej reprezentującej wartości odbitego od nich promieniowania elektromagnetycznego. Większość z tych cech jest możliwa do wychwycenia jedynie w bardzo wąskich fragmentach spektrum, które jako oddzielne zakresy spektralne rejestrują sensory hiperspektralne. Ta właściwość zdjęć hiperspektralnych powoduje, że ich zastosowanie w celu wydzielenia różnych formacji roślinnych wpływa na znaczne zwiększenie dokładności klasyfikacji w porównaniu z danymi wielospektralnymi.
+Hyperspectral sensors provide full spectral information about the tested object, as well as bring out features that were previously not possible to obtain. Most objects on the Earth's surface are characterized by the presence of specific features on a curve representing the values ​​of the electromagnetic radiation reflected from them. Most of these features are only possible to capture in very narrow parts of the spectrum that register hyperspectral sensors as separate spectral ranges. This property of hyperspectral images causes that their use to isolate various plant formations significantly increases the accuracy of classification compared to multispectral data.
 
-Zastosowanie obrazów hiperspektralnych
+Application of hyperspectral images
 ======================================
 
-Geografia, geologia, kartografia i dziedziny pokrewne
+Geography, geology, cartography and related fields
 -----------------------------------------------------
 
-Obrazowanie wielospektralne znajduje zastosowanie w systemach zbierania informacji geograficznych, w tym zwłaszcza w Systemach Informacji o Terenie. Dane multispektralne pozwalają na zdobycie o wiele pełniejszej informacji o terenie, niż tradycyjna fotografia satelitarna. Na podstawie analizy światła odbitego przez różne fragmenty terenu można wyciągać wnioski na temat rodzaju skał, składu i wilgotności gleby, a także rodzaju roślinności zasiedlającej teren (w tym roślinności oceanicznej).
+Multispectral imaging is used in geographic information collection systems, especially in Terrain Information Systems. Multispectral data allow to obtain much more complete information about the area than traditional satellite photography. Based on the analysis of light reflected by various parts of the terrain, conclusions can be drawn about the type of rocks, soil composition and humidity, as well as the type of vegetation inhabiting the area (including oceanic vegetation).
 
-Meteorologia
+Meteorology
 ------------
 
-Satelitarne obrazy wielospektralne są szczególnie ważne dla meteorologii - pozwalają na badanie rozkładu koncentracji pary wodnej, a także rozkładów temperatur gruntu, wody i mas powietrza. Protoplastą technik multispektralnych w meteorologii były jednokanałowe fotografie w podczerwieni.
+Satellite multispectral images are particularly important for meteorology - they allow the study of the distribution of water vapor concentration, as well as the distribution of soil, water and air mass temperatures. The ancestor of multispectral techniques in meteorology were single-channel infrared photographs.
 
-Ekologia, leśnictwo, rolnictwo
+Ecology, forestry, agriculture
 ------------------------------
 
-Obrazy multipsektralne i hiperspektralne są przydatne w badaniu rozkładu populacji roślin, w szczególności flory oceanicznej oraz drzewostanów na obszarach leśnych. Dokładna analiza światła odbitego od roślin pozwala na wykrycie obecności określonych gatunków drzew, a także wskazuje ich ogólny ,,stan zdrowia”.
+Multipsectoral and hyperspectral images are useful in studying the distribution of plant populations, in particular ocean flora and forest stands in forest areas. A thorough analysis of the light reflected from plants allows the detection of the presence of certain species of trees, and also indicates their overall "health".
 
-Inwigilacja, ratownictwo, poszukiwania obiektów
+Surveillance, rescue, searching for objects
 -----------------------------------------------
 
-Dzięki obrazowaniu wielospektralnemu możliwa jest identyfikacja obiektów częściowo ukrytych, które byłyby niewidoczne w obrazie tradycyjnych kamer kolorowych lub podczas obserwacji bezpośredniej.
+Thanks to multispectral imaging, it is possible to identify partially hidden objects that would be invisible in the image of traditional color cameras or during direct observation.
 
-Kryminalistyka
+Criminology
 --------------
 
-W technice kryminalistycznej obrazowanie wielospektralne jest narzędziem pozwalającym na przyśpieszenie prac śledczych. Wielospektralne fotografie kryminalistyczne miejsc i dowodów zbrodni pozwalają na szybkie wykrycie mikrośladów określonych substancji organicznych lub chemicznych.
+In forensic technique, multispectral imaging is a tool to accelerate investigative work. Multispectral forensic photographs of crime scene and evidence allow the rapid detection of microtraces of specific organic or chemical substances.
 
-Historia sztuki, archeologia
+Art history, archeology
 ----------------------------
 
-W badaniach zabytkowych dzieł sztuki, w tym obrazów, książek obrazowanie wielospektralne jest niezastąpionym narzędziem nieinwazyjnego badania autentyczności oraz ukrytej treści dzieła.
+In the study of historic works of art, including paintings, books, multispectral imaging is an irreplaceable tool for non-invasive study of the authenticity and hidden content of the work.
 
-Segmentacja ”kostki” hiperspektralnej metodami hiperspektralnymi
+Hyperspectral "cube" segmentation by hyperspectral methods
 ================================================================
 
-W literaturze wielu naukowców prezentuje wyniki badań uzyskane na podstawie modelowania fizycznego i matematycznego, które w sposób optymalny ekstrahuje informację z danych hiperspektralnych. Analiza danych ma na celu ekstrakcję informacji zawartej w danych hiperspektralnych, dla których zakres i możliwośći analiz obrazowych zostały znacznie rozszerzone, ze względu na zwiększenie rozdzielczości spektralnej. Metody Analizy danych hiperspektralnych można podzielić ze wzlędu na sposób ekstrakcji informacji zawartej w pikselach obrazu. Aspinall dzieli je na metody pikselowe oraz metody podpikselowe. Pierwsza grupa to procedury, które klasyfikują piksel poprzez identyfikację głównego komponentu danego piksela. Do nich należą m.in. Spectral Angle Mapper (SAM), Binary Encoding (BE), Spectral Feature Fitting (SFF), Continuum Removed (CR). Natomiast do drugiej grupy Aspinall zalicza algorytmy podpikselowe, pozwalające oszacować skład materiału znajdującego się w obrębie danego piksela, a należą do nich: Linear Spectral Unmixing (LSU), Matched Filtering (MF), Mixture Tuned Matched Filtering (MTMF). Podobnego podziału dokonał Plaza nazywając te dwie grupy procedur technikami całych pikseli i pikseli mieszanych. Plaza podkreśla także, że obraz należy analizować używając wszystkich dostępnych metod i algorytmów, ponieważ w obrębie danej sceny znajdują się tereny, gdzie odpowiedź spektralna może pochodzić od grupy pikseli czystych spektralnie lub od pikseli silnie zmieszanych.
+In the literature, many scientists present research results obtained on the basis of physical and mathematical modeling, which optimally extracts information from hyperspectral data. The purpose of data analysis is to extract information contained in hyperspectral data, for which the scope and possibilities of image analysis have been significantly expanded due to the increase in spectral resolution. The methods of analysis of hyperspectral data can be divided due to the method of extracting information contained in the pixels of the image. Aspinall divides them into pixel methods and sub-pixel methods. The first group is the procedures that classify a pixel by identifying the main component of a given pixel. These include Spectral Angle Mapper (SAM), Binary Encoding (BE), Spectral Feature Fitting (SFF), Continuum Removed (CR). In contrast, Aspinall's second group includes sub-pixel algorithms that allow estimating the composition of the material within a given pixel, including Linear Spectral Unmixing (LSU), Matched Filtering (MF), Mixture Tuned Matched Filtering (MTMF). A similar division was made by Plaza calling these two groups of procedures techniques of whole pixels and mixed pixels. Plaza also emphasizes that the image should be analyzed using all available methods and algorithms, because within a given scene there are areas where the spectral response may come from a group of spectrally pure pixels or from highly mixed pixels.
 
-Pikselowe metody klasyfikacji danych hiperspektralnych
+Pixel methods for classifying hyperspectral data
 ------------------------------------------------------
 
 ### Spectral Angle Mapper (SAM)
 
-Spectral Angle Mapper (SAM) jest to metoda automatycznego porównywania krzywych spektralnych uzyskanych z obrazu z krzywymi bibliotek spektralnych utworzonymi na podstawie pomiarów terenowych lub laboratoryjnych. Jak krzywe referencyjne mogą być wykorzystane także krzywe spektralne uzyskane z obrazu (tzw endmembersy) lub krzywe spektralne z bibliotek odpowiedzi spektralnych dostępnych z różnych źródeł zewnętrznych (np. biblioteka laboratoriów USGS, JPL). Wartości odpowiedzi spektralnej dla piksela w n - kanałach można potraktować jako współrzędne wektora w przestrzeni n - wymiarowej. W postaci wektora może również zostać przedstawiona odpowiedź spektralna wzorca. Algorytm metody SAM oparty jest na porównaniu wektorów spektralnych dla każdego piksela analizowanego obrazu z wektorami spektralnymi dla obiektów referencyjnych.
+Spectral Angle Mapper (SAM) is a method of automatically comparing spectral curves obtained from the image with the spectral library curves created on the basis of field or laboratory measurements. As reference curves, spectral curves obtained from images (so-called endmembers) or spectral curves from spectral response libraries available from various external sources (e.g. library of USGS laboratories, JPL) can be used. The spectral response values ​​for a pixel in n - channels can be treated as vector coordinates in n - dimensional space. The spectral response of the pattern can also be represented as a vector. The SAM method algorithm is based on a comparison of spectral vectors for each pixel of the analyzed image with spectral vectors for reference objects.
 
-Obliczany jest kąt pomiędzy tymi wektorami według następującego wzoru:
+The angle between these vectors is calculated according to the following formula:
 
 \[\alpha = cos^{-1}\left ( \frac{\sum_{i = 1}^{nb} t_{i} r_{i}}{(\sum_{i = 1}^{nb} t_{i}^2)^{\frac{1}{2}} (\sum_{i = 1}^{nb} r_{i}^2)^{\frac{1}{2}}} \right )\]
 
-gdzie:
+where:
 
--   \(\alpha\) = kąt spektralny pomiędzy wzorcem, a krzywą spektralną danego piksela
+- \ (\ alpha \) = spectral angle between the standard and the spectral curve of the pixel
 
--   nb = ilość kanałów spektralnych
+- nb = number of spectral channels
 
--   t = wektor odpowiedzi spektralnej wzorca
+- t = vector of spectral response of the standard
 
--   r = wektor odpowiedzi spektralnej analizowanego piksela
+- r = the spectral response vector of the analyzed pixel
 
-W algorytmie tym, oceniany jest otrzymany kąt, nie długość wektora.
+In this algorithm, the obtained angle is evaluated, not the length of the vector.
 
-![Wizualizacja klasyfikacji pikseli do poszczególnych klas](images/2.png "fig:") 
+![Visualization of pixel classification for individual classes](images/2.png "fig:") 
 
-Zalety tego algorytmu to:
+The advantages of this algorithm are:
 
--   Szybka i łatwa implementacja
+- Quick and easy implementation
 
--   Zrozumiały dla użytkownika
+- Understandable by the user
 
--   Względnie odporny na różnice w oświetleniu (topografia, źródło światła, sensor itp.)
+- Relatively resistant to differences in lighting (topography, light source, sensor, etc.)
 
--   Porównywalność widm obrazu z widmami laboratoryjnymi
+- Comparability of image spectra with laboratory spectra
 
-Wady tego algorytmu to:
+The disadvantages of this algorithm are:
 
--   Tolerancji oświetlenia towarzyszy niewrażliwość na wykrywanie pewnych zmian fizjologicznych
+- Lighting tolerance is accompanied by insensitivity to the detection of certain physiological changes
 
--   Podobne widma, które różnią się tylko znacząco albedo (np. lasy iglaste i lasy liściaste) są błędnie klasyfikowane
+- Similar spectra that only differ significantly in albedo (e.g. coniferous and deciduous forests) are incorrectly classified
 
-Implementacja własna algorytmu SAM
+Own implementation of the SAM algorithm
 ==================================
 
-Do implementacji algorytmu wykorzystano znaleziony w internecie [kod](https://github.com/aditis1204/spectral-angle-mapper), który posłużył jako baza projektu.
-Został on całkowicie zmodyfikowany, ponieważ autor programu w zły sposób zaimplementował algorytm.
-Po dłuższej analizie, kod został poprawiony, tak aby spełniał wymagania dotyczące projektu.
+To implement the algorithm, the [code] found on the internet (https://github.com/aditis1204/spectral-angle-mapper) was used, which served as the basis for the project.
+It has been completely modified because the author of the program has incorrectly implemented the algorithm.
+After a long analysis, the code has been revised to meet the project requirements.
 
-Stack technologiczny
+Technology stack
 --------------------
 
-Wybrany język programowania to Python wraz z następującymi bibliotekami:
+The selected programming language is Python with the following libraries:
 
--   rasterio - biblioteka pozwalająca na zaimportowanie kostki hiperspektralnej w formacie .tif do programu;
+- rasterio - a library that allows you to import a hyperspectral cube in the .tif format into the program;
 
--   numpy - biblioteka pozwalająca na szybsze działanie na macierzach
+- numpy - a library that allows faster operation on arrays
 
--   tkinter - biblioteka pozwalająca na stworzenie interfejsu do komunikacji z użytkownikiem
+- tkinter - a library that allows you to create an interface for communicating with the user
 
-Omówienie interfejsu graficznego
+Graphical interface overview
 --------------------------------
 
-Po uruchomieniu pliku programu w odpowiednio skonfigurowanym środowisku, użytkownik otrzymuje do komunikacji z programem okno, pozwalające na wybranie kostki hiperspektralnej w formacie .tif oraz na wyświetlenie obrazu *True Colour Composite* oraz *False Colour Composite*.
+After running the program file in a properly configured environment, the user receives a window for communication with the program, allowing to select a hyperspectral cube in .tif format and to display the image *True Colour Composite* and *False Colour Composite*.
 
-![Okno wyboru pliku i wyświetlenia go](images/3.png "fig:") 
+![File selection and display window](images/3.png "fig:") 
 
-Po wybraniu pliku kostki hiperspektralnej oraz po kliknięciu przycisku *Show TCC & FCC* wyświetlane zostaną wcześniej wspomniane dwa obrazy.
+After selecting the hyperspectral cube file and clicking the *Show TCC & FCC* button, the aforementioned two images will be displayed.
 
-![Wyświetlenie obrazów TCC oraz FCC](images/4.png "fig:") 
+![Displaying TCC and FCC images](images/4.png "fig:") 
 
-Obraz wydaje się zbyt ciemny, ponieważ zastosowano normalizację liniową, a powinna zostać zastosowana normalizacja według następującego wzoru:
+The image seems too dark because linear normalization has been used, and normalization should be applied according to the following formula:
 
 ![image](images/5.png) 
 
-gdzie \(\alpha\) określa szerokość zakresu intensywności wejściowej, a \(\beta\) określa intensywność, wokół której zakres jest wyśrodkowany.
+where \ (\ alpha \) specifies the width of the input intensity range and \ (\ beta \) specifies the intensity around which the range is centered.
 
-Zignorowano jednak implementację tego algorytmu normalizującego, ponieważ nie było to głównym problemem tego projektu a z przedstawionych fotografii można wybrać bez problemu piksele reprezentatywne dla klas które chcemy wyróżnić z przedstawionego obrazu FCC.
+However, the implementation of this normalizing algorithm was ignored, because it was not the main problem of this project and from the presented photos you can easily choose the representative pixels for the classes that we want to highlight from the presented FCC image.
 
-W celu wybrania sygnatur spektralnych interesujących nas klas, należy dwa razy kliknąć lewym klawiszem myszy na wybrany piksel.
+In order to select spectral signatures of the classes we are interested in, double-click the left mouse button on the selected pixel.
 
-Po wybraniu interesujących nas pikseli należy zamknąć wszystkie okna programu i zaczekać aż ten sprawdzi wszystkie piksele we wszystkich warstwach kostki hiperspektralnej. Czas oczekiwania na wyniki wydłuża się wraz z ilością wybranych wcześniej reprezentatywnych pikseli.
-Po chwili otrzymujemy następujący obraz:
+After choosing the pixels of interest you should close all program windows and wait until it checks all pixels in all layers of the hyperspectral cube. The waiting time for results increases with the number of previously selected representative pixels.
+After a while we get the following picture:
 
-![Sklasyfikowany obraz według sygnatur spektralnych wybranych przez użytkownika](images/6.png "fig:") 
+![Classified image according to spectral signatures selected by the user](images/6.png "fig:") 
 
-Piksele oznaczone na czerwono, zielono oraz niebiesko są reprezentantami wcześniej wybranych sygnatur.
-Reszta czarnych pikseli nie została przydzielona do żadnej klasy.
+The pixels marked in red, green and blue represent the previously selected signatures.
+The rest of the black pixels were not assigned to any classes.
 
-Na końcu, wyświetlane jest podsumowanie działania programu, przedstawiające zestawienie wszystkich 3 obrazów:
+Finally, a summary of the program operation is displayed, showing a summary of all 3 images:
 
-![Podsumowanie działania programu](images/7.png "fig:") 
+![Summary of the program operation](images/7.png "fig:") 
 
-Implementacja algorytmu
+Algorithm implementation
 -----------------------
 
-Najważniejsza część programu zaczyna się od 125 linii. Obliczane są tam wartości kąta dla każdego piksela w kostce hiperspektralnej, według wcześniej podanego wzoru SAM.
+The most important part of the program starts from line 125. The angle values for each pixel in the hyperspectral cube are calculated according to the SAM formula given earlier.
 
-![Implementacja algorytmu Spectral Angle Mapper](images/8.png "fig:") 
+![Implementation of the Spectral Angle Mapper algorithm](images/8.png "fig:") 
 
-Warto tutaj zauważyć, że kąt \(p\_cos[j]\) jest obliczany w radianach. W związku z tym stała \(0.1\) określa do jakiego poziomu, dany piksel jest klasyfikowany do sygnatury wyznaczonej wcześniej przez użytkownika.
+It is worth noting here that the angle \ (p \ _cos [j] \) is calculated in radians. Therefore, the constant \ (0.1 \) determines to what level a given pixel is classified into the signature previously set by the user.
 
-Wykorzystana kostka hiperspektralna
+Hyperspectral cube used
 -----------------------------------
 
-Kostka została pobrana ze strony <https://engineering.purdue.edu/~biehl/MultiSpec/hyperspectral.html>.
-Kostka zawiera 191 kanałów spektralnych dla obszaru Washington DC Mall.
+The cube was downloaded from <https://engineering.purdue.edu/~biehl/MultiSpec/hyperspectral.html>.
+The cube contains 191 spectral channels for the Washington DC Mall area.
 
-![Obraz wykorzystanej kostki w odniesieniu do ground truth](images/9.png "fig:") 
+![Image of cube used in relation to ground truth](images/9.png "fig:") 
 
-Podsumowanie
+Summary
 ============
 
-Zadaniem projektu było zaproponować i przetestować metodę segmentacji pobranej z Internetu ”kostki” hiperspektralnej z wykorzystaniem sygnatury spektralnej obiektu, który chcemy wyodrębnić.
+The task of the project was to propose and test a method of segmentation of the hyperspectral "cube" downloaded from the Internet using the spectral signature of the object that we want to extract.
 
-Zadanie uważam za zrealizowane, jednak podczas pracy nad tym projektem napotkałem wiele problemów zanim został zrealizowany. Trudności polegały na znalezieniu odpowiednich materiałów edukacyjnych związanych z poruszanym tematem, których w sieci Internet jest bardzo mało. Jedyne repozytorium jakie udało mi się znaleźć spośród metod wykorzystujących sygnatury spektralne obiektu, zostało wykorzystane do stworzenia mojej implementacji algorytmu \(Spectral Angle Mapper\). W międzyczasie sprawdziłem działanie metod \(ISODATA\) oraz \(K-means\). Wykorzystana kostka spektralna nie została również wcześniej przygotowana do badań, co jest zalecanym działaniem, jednak z powodu ograniczonego czasu i dostępnych zasobów został tylko zaimplementowany algorytm \(SAM\).
-Niestety nie jestem w stanie odnieść się do innego oprogramowania segmentującego kostki hiperspektralne, ponieważ nie udało mi się takiego znaleźć. Jednak porównując otrzymane wyniki klasyfikacji do Ground Truth kostki, jestem w stanie powiedzieć, że algorytm został zaimplementowany poprawnie i zrozumiałem zasadę jego działania.
+I consider the task completed, but while working on this project I encountered many problems before it was completed. Difficulties consisted in finding appropriate educational materials related to the topic, which are very few on the Internet. The only repository I could find among methods using the object's spectral signatures was used to create my implementation of the \ (Spectral Angle Mapper \) algorithm. In the meantime I checked the \ (ISODATA \) and \ (K-means \) methods. The spectral cube used has not been previously prepared for testing, which is the recommended action, but due to the limited time and available resources, only the algorithm \ (SAM \) has been implemented.
+Unfortunately, I can't refer to other hyperspectral cube segmenting software because I haven't found it. However, comparing the obtained classification results to the Ground Truth cube, I am able to say that the algorithm has been implemented correctly and I understood the principle of its operation.
 
-Dzięki realizacji tego projektu, została mi przybliżona problematyka związana z analizą zdjęć hiperspektralnych, która z pewnością może się przydać podczas pracy zawodowej.
+Thanks to the implementation of this project, I was introduced to the issues related to the analysis of hyperspectral images, which can certainly be useful during professional work.
 
 <span>9</span>
 
