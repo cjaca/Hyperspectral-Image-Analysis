@@ -2,8 +2,15 @@
 
 Hyperspectral "cube" segmentation using the object's spectral signature
 
+
 Jacek Ciuba **152082**
 June 3, 2020
+
+If you want to contribute to this project feel free to post any PRs.
+
+If this article helped you, please 
+
+![image2](https://camo.githubusercontent.com/c3f856bacd5b09669157ed4774f80fb9d8622dd45ce8fdf2990d3552db99bd27/68747470733a2f2f7777772e6275796d6561636f666665652e636f6d2f6173736574732f696d672f637573746f6d5f696d616765732f6f72616e67655f696d672e706e67)
 
 Introduction
 ============
