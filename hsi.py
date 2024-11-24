@@ -146,7 +146,9 @@ class Root(tkinter.Tk):
                     p_cos[j] = product_numtr[j] / (p_deno[j] * p_reno[j])
 
                     p_ang[j] = numpy.arccos(p_cos[j])
-
+                    
+                p_ang = np.where(p_ang<=0, 1e-6, p_ang)
+                
                 if min(p_ang) < 0.1:
                     class_no = numpy.argmin(p_ang, axis=0)
                 else:
